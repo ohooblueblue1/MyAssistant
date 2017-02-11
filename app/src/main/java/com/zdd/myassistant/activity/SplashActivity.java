@@ -1,9 +1,9 @@
 package com.zdd.myassistant.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.zdd.myassistant.R;
+import com.zdd.myassistant.base.BaseActivity;
 
 /**
  * Project Name: MyAssistant
@@ -14,7 +14,7 @@ import com.zdd.myassistant.R;
  * @author zdd
  * @date 2017年02月11日 13:13
  */
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

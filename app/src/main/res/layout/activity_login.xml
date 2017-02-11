@@ -6,10 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/myBackground"
-    android:paddingLeft="12dp"
-    android:paddingRight="12dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
     tools:context="com.zdd.myassistant.activity.LoginActivity">
-
 
     <RelativeLayout
         android:id="@+id/rl_app_info"
@@ -36,14 +35,12 @@
 
     </RelativeLayout>
 
-
     <!--用户名-->
     <LinearLayout
         android:id="@+id/ll_login_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rl_app_info"
-
         android:background="@drawable/login_shape_bg"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -55,12 +52,13 @@
             android:src="@drawable/user"/>
 
         <EditText
-            android:id="@+id/edt_account"
+            android:id="@+id/edt_user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:background="@color/transparent"
-            android:hint="请输入用户名..."/>
+            android:hint="请输入用户名..."
+            android:maxLines="1"/>
 
     </LinearLayout>
 
@@ -81,15 +79,19 @@
             android:layout_height="wrap_content"
             android:src="@drawable/password"/>
 
-        <EditText
+        <com.xwray.passwordview.PasswordView
             android:id="@+id/edt_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
+            android:layout_marginRight="4dp"
             android:background="@color/transparent"
-            android:hint="请输入密码..."/>
+            android:hint="请输入密码..."
+            android:maxLines="1"/>
 
     </LinearLayout>
+
+    <!--登录按钮-->
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -102,15 +104,31 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="还没账号?"/>
+            android:text="还没有账号?"/>
 
         <TextView
-            android:textColor="@color/colorAccent"
+            android:id="@+id/tv_to_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="  立即注册 >"/>
+            android:padding="8dp"
+            android:text="立即注册 >"
+            android:textColor="@color/colorAccent"/>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:background="@drawable/ripple_round_blue"
+        android:text="登录"
+        android:textColor="#fff"
+        android:layout_below="@+id/ll_login_password"
+        android:layout_centerHorizontal="true"/>
 
 
 </RelativeLayout>
