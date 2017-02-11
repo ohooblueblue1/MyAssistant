@@ -1,4 +1,4 @@
-package com.zdd.myassistant.activity;
+package com.zdd.myassistant.base;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 /**
  * Project Name: MyAssistant
  * File Name:    BaseActivity.java
- * ClassName:    BaseActivity
  * <p>
  * Description: Activity基类
  *
