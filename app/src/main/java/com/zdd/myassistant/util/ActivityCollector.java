@@ -19,18 +19,26 @@ public class ActivityCollector {
     //存放所有Activity
     public static List<Activity> sActivities = new ArrayList<Activity>();
 
-    public static void addActivity(Activity activity){
+    public static void addActivity(Activity activity) {
         sActivities.add(activity);
     }
 
-    public static void removeActivity(Activity activity){
+    public static void removeActivity(Activity activity) {
         sActivities.remove(activity);
     }
 
-    public static void finishAll(){
-        for (Activity activity : sActivities){
-            if (!activity.isFinishing()){
+    public static void finishAll() {
+        for (Activity activity : sActivities) {
+            if (!activity.isFinishing()) {
                 activity.finish();
+            }
+        }
+    }
+
+    public static void finishAllOther(Activity activity) {
+        for (Activity activityToClose : sActivities) {
+            if (!activityToClose.isFinishing() && activityToClose != activity) {
+                activityToClose.finish();
             }
         }
     }

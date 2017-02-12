@@ -1,5 +1,7 @@
-package com.zdd.myassistant.activity;
+package com.zdd.myassistant.activity.before;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,6 +10,7 @@ import android.widget.TextView;
 
 import com.xwray.passwordview.PasswordView;
 import com.zdd.myassistant.R;
+import com.zdd.myassistant.activity.main.MainActivity;
 import com.zdd.myassistant.base.BaseActivity;
 import com.zdd.myassistant.entity.MyUser;
 import com.zdd.myassistant.entity.event.RegisterSuccessEvent;
@@ -131,7 +134,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
      * 登录成功的回调
      */
     private void onLoginSuccess() {
-
+        dismissProgressDialog();
+        ToastUtil.showToast(this, "登录成功~");
+        //获取登录成功后的本地用户信息
+        //通过MyUser user = BmobUser.getCurrentUser(MyUser.class)获取自定义用户信息
+        //启动主界面
+        MainActivity.actionStart(this);
     }
 
 
@@ -139,7 +147,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
      * 登录失败的回调
      */
     private void onLoginFailure() {
-
+        dismissProgressDialog();
+        ToastUtil.showToast(this, "登录失败~");
     }
 
     /**
@@ -150,6 +159,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         //注册成功后更新登录界面
         mPwVPassword.setText("");
         mEdtAccount.setText(event.getAccount());
+    }
+
+    public static void actionStart(Context context){
+        Intent intent = new Intent(context, LoginActivity.class);
+        context.startActivity(intent);
     }
 
 }

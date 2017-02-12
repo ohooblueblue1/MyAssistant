@@ -16,21 +16,17 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
+        android:name=".app.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".app.MyApplication"
         android:theme="@style/AppTheme.NoActionBar">
 
         <!-- 引导展示页 -->
-        <activity android:name=".activity.SplashActivity"
+        <activity
+            android:name=".activity.before.SplashActivity"
             android:theme="@style/AppTheme.FullScreen">
-
-        </activity>
-
-        <!-- 登录页面 -->
-        <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -38,14 +34,20 @@
             </intent-filter>
         </activity>
 
+        <!-- 登录页面 -->
+        <activity android:name=".activity.before.LoginActivity"
+                  android:theme="@style/AppTheme.FullScreen">
+        </activity>
+
         <!-- 注册页面 -->
-        <activity android:name=".activity.RegisterActivity"
+        <activity
+            android:name=".activity.before.RegisterActivity"
             android:label="账号注册">
         </activity>
 
         <!-- 主界面 -->
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.main.MainActivity"
             android:label="@string/app_name">
         </activity>
 

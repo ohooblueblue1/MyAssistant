@@ -1,5 +1,7 @@
-package com.zdd.myassistant.activity;
+package com.zdd.myassistant.activity.main;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -10,6 +12,7 @@ import android.view.MenuItem;
 
 import com.zdd.myassistant.base.BaseActivity;
 import com.zdd.myassistant.R;
+import com.zdd.myassistant.util.ActivityCollector;
 
 /**
  * Project Name: MyAssistant
@@ -30,6 +33,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     private void initView() {
+        //关闭其他Activity
+        ActivityCollector.finishAllOther(this);
         //初始化toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -71,5 +76,10 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public static void actionStart(Context context){
+        Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
     }
 }

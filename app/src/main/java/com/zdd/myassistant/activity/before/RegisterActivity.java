@@ -1,4 +1,4 @@
-package com.zdd.myassistant.activity;
+package com.zdd.myassistant.activity.before;
 
 import android.content.Context;
 import android.content.Intent;
