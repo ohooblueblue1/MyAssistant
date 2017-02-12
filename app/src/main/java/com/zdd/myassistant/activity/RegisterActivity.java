@@ -3,7 +3,6 @@ package com.zdd.myassistant.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,9 +11,13 @@ import android.widget.EditText;
 
 import com.xwray.passwordview.PasswordView;
 import com.zdd.myassistant.R;
+import com.zdd.myassistant.base.BaseActivity;
 import com.zdd.myassistant.entity.MyUser;
+import com.zdd.myassistant.entity.event.RegisterSuccessEvent;
 import com.zdd.myassistant.util.TextUtil;
 import com.zdd.myassistant.util.ToastUtil;
+
+import org.greenrobot.eventbus.EventBus;
 
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
@@ -29,7 +32,7 @@ import cn.bmob.v3.listener.SaveListener;
  * @author zdd
  * @date 2017年02月05日 21:13
  */
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
+public class RegisterActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText mEdtUserName;
     private PasswordView mPwvPassword;
@@ -95,6 +98,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         if (!isValid()) {
             return;
         }
+        //网络不可用直接return
+        if (!checkIsNetAvailable()) {
+            return;
+        }
+        showProgressDialog("注册中，请稍后~");
         //进行注册
         MyUser myUser = new MyUser();
         myUser.setUsername(mEdtUserName.getText().toString());
@@ -103,9 +111,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void done(MyUser myUser, BmobException e) {
                 if (e == null) {
-                    ToastUtil.showToast(RegisterActivity.this, "注册成功");
+                    onRegisterSuccess();
                 } else {
-                    ToastUtil.showToast(RegisterActivity.this, "注册失败");
+                    onRegisterFailure();
                 }
             }
         });
@@ -136,5 +144,20 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         return true;
     }
 
+    /**
+     * 注册成功的回调
+     */
+    private void onRegisterSuccess() {
+        dismissProgressDialog();
+        ToastUtil.showToast(RegisterActivity.this, "注册成功，请登录~");
+        //通知登录界面
+        EventBus.getDefault().post(new RegisterSuccessEvent(mEdtUserName.getText().toString()));
+        finish();
+    }
+
+    private void onRegisterFailure() {
+        dismissProgressDialog();
+        ToastUtil.showToast(RegisterActivity.this, "注册失败");
+    }
 
 }

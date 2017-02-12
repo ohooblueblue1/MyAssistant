@@ -5,7 +5,7 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/myBackground"
+    android:background="@drawable/start_bg"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     tools:context="com.zdd.myassistant.activity.LoginActivity">

@@ -26,7 +26,9 @@
         android:background="@drawable/login_shape_bg"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="12dp">
+        android:padding="8dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -53,7 +55,9 @@
         android:background="@drawable/login_shape_bg"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="12dp">
+        android:padding="8dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -79,7 +83,9 @@
         android:background="@drawable/login_shape_bg"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="12dp">
+        android:padding="8dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -103,9 +109,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ll_register_confirm"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="14dp"
-        android:layout_marginRight="14dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/ripple_round_blue"
         android:text="注册"
         android:textColor="#fff"/>

@@ -1,6 +1,7 @@
 package com.zdd.myassistant.app;
 
 import android.app.Application;
+import android.content.Context;
 
 import cn.bmob.v3.Bmob;
 
@@ -16,14 +17,19 @@ import cn.bmob.v3.Bmob;
 public class MyApplication extends Application {
 
     public static final String APPLICATION_ID = "d4564776a5246d78d181e41bd447ee1d";
+    private static Context sContext;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
+        sContext = getApplicationContext();
         configBmob();
     }
 
+    /**
+     * 配置bmob后端云
+     */
     private void configBmob() {
         //提供以下两种方式进行初始化操作：
         //第一：默认初始化
@@ -41,6 +47,13 @@ public class MyApplication extends Application {
         //.setFileExpiration(2500)
         //.build();
         //Bmob.initialize(config);
+    }
+
+    /**
+     * @return 应用程序上下文对象
+     */
+    public static Context getAppContext() {
+        return sContext;
     }
 
 }
