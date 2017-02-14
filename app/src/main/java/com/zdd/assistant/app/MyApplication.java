@@ -1,4 +1,4 @@
-package com.zdd.myassistant.app;
+package com.zdd.assistant.app;
 
 import android.app.Application;
 import android.content.Context;

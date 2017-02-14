@@ -1,4 +1,4 @@
-package com.zdd.myassistant.util;
+package com.zdd.assistant.util;
 
 import android.app.Activity;
 

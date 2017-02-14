@@ -7,7 +7,7 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        applicationId "com.zdd.myassistant"
+        applicationId "com.zdd.assistant"
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 1

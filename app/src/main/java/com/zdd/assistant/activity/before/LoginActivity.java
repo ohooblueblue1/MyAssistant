@@ -1,4 +1,4 @@
-package com.zdd.myassistant.activity.before;
+package com.zdd.assistant.activity.before;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,13 +9,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.xwray.passwordview.PasswordView;
-import com.zdd.myassistant.R;
-import com.zdd.myassistant.activity.main.MainActivity;
-import com.zdd.myassistant.base.BaseActivity;
-import com.zdd.myassistant.entity.MyUser;
-import com.zdd.myassistant.entity.event.RegisterSuccessEvent;
-import com.zdd.myassistant.util.TextUtil;
-import com.zdd.myassistant.util.ToastUtil;
+import com.zdd.assistant.R;
+import com.zdd.assistant.activity.main.MainActivity;
+import com.zdd.assistant.base.BaseActivity;
+import com.zdd.assistant.entity.MyUser;
+import com.zdd.assistant.entity.event.RegisterSuccessEvent;
+import com.zdd.assistant.util.TextUtil;
+import com.zdd.assistant.util.ToastUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

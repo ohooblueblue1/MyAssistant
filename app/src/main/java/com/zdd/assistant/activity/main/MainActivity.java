@@ -1,4 +1,4 @@
-package com.zdd.myassistant.activity.main;
+package com.zdd.assistant.activity.main;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,9 +10,9 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.zdd.myassistant.base.BaseActivity;
-import com.zdd.myassistant.R;
-import com.zdd.myassistant.util.ActivityCollector;
+import com.zdd.assistant.base.BaseActivity;
+import com.zdd.assistant.R;
+import com.zdd.assistant.util.ActivityCollector;
 
 /**
  * Project Name: MyAssistant

@@ -8,7 +8,7 @@
     android:background="@drawable/start_bg"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
-    tools:context="com.zdd.myassistant.activity.before.LoginActivity">
+    tools:context="com.zdd.assistant.activity.before.LoginActivity">
 
     <RelativeLayout
         android:id="@+id/rl_app_info"

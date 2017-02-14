@@ -1,4 +1,4 @@
-package com.zdd.myassistant.entity.event;
+package com.zdd.assistant.entity.event;
 
 /**
  * Project Name: MyAssistant

@@ -1,4 +1,4 @@
-package com.zdd.myassistant.entity;
+package com.zdd.assistant.entity;
 
 import cn.bmob.v3.BmobUser;
 

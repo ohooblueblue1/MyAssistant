@@ -1,4 +1,4 @@
-package com.zdd.myassistant;
+package com.zdd.assistant;
 
 import org.junit.Test;
 

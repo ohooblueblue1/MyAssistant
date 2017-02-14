@@ -1,14 +1,12 @@
-package com.zdd.myassistant.activity.before;
+package com.zdd.assistant.activity.before;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
-import com.zdd.myassistant.R;
-import com.zdd.myassistant.activity.main.MainActivity;
-import com.zdd.myassistant.base.BaseActivity;
-
-import java.util.function.ToLongBiFunction;
+import com.zdd.assistant.R;
+import com.zdd.assistant.activity.main.MainActivity;
+import com.zdd.assistant.base.BaseActivity;
 
 import cn.bmob.v3.BmobUser;
 

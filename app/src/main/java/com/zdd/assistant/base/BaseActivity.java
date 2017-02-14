@@ -1,13 +1,13 @@
-package com.zdd.myassistant.base;
+package com.zdd.assistant.base;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.zdd.myassistant.util.ActivityCollector;
-import com.zdd.myassistant.util.NetworkUtil;
-import com.zdd.myassistant.util.ToastUtil;
+import com.zdd.assistant.util.ActivityCollector;
+import com.zdd.assistant.util.NetworkUtil;
+import com.zdd.assistant.util.ToastUtil;
 
 /**
  * Project Name: MyAssistant

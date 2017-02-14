@@ -1,10 +1,10 @@
-package com.zdd.myassistant.util;
+package com.zdd.assistant.util;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.zdd.myassistant.app.MyApplication;
+import com.zdd.assistant.app.MyApplication;
 
 /**
  * Project Name: MyAssistant
