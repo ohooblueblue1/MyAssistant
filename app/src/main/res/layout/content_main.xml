@@ -10,5 +10,11 @@
     tools:context="com.zdd.assistant.activity.main.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_functions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

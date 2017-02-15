@@ -7,9 +7,12 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.zdd.assistant.adapter.FunctionsAdapter;
 import com.zdd.assistant.base.BaseActivity;
 import com.zdd.assistant.R;
 import com.zdd.assistant.util.ActivityCollector;
@@ -25,7 +28,14 @@ import com.zdd.assistant.util.ActivityCollector;
  */
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    // TODO: 2017/2/15 布局上方可展示天气信息
+    
     private DrawerLayout mDrawer;
+    //功能列表
+    private RecyclerView mRvFuctions;
+    //适配器
+    // TODO: 2017/2/15 初始化
+    private FunctionsAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +61,13 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //初始化RecyclerView
+        mRvFuctions = (RecyclerView) findViewById(R.id.rv_functions);
+        //三行的布局管理器
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false);
+        mRvFuctions.setLayoutManager(layoutManager);
+        // TODO: 2017/2/15 设置adapter 
     }
 
     /**
