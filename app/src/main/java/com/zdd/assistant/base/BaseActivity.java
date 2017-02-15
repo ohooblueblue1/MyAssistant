@@ -22,8 +22,7 @@ public class BaseActivity extends SwipeBackActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //添加到Activity管理类中
         ActivityCollector.addActivity(this);

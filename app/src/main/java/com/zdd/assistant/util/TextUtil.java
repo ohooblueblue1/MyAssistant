@@ -21,7 +21,8 @@ public class TextUtil {
      * @return 文字是否为空
      */
     public static boolean isEmpty(EditText editText) {
-        return TextUtils.equals("", editText.getText().toString());
+        return TextUtils.equals("", editText.getText()
+                                            .toString());
     }
 
 

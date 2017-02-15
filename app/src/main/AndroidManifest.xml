@@ -35,8 +35,9 @@
         </activity>
 
         <!-- 登录页面 -->
-        <activity android:name="com.zdd.assistant.activity.before.LoginActivity"
-                  android:theme="@style/AppTheme.FullScreen">
+        <activity
+            android:name="com.zdd.assistant.activity.before.LoginActivity"
+            android:theme="@style/AppTheme.FullScreen">
         </activity>
 
         <!-- 注册页面 -->

@@ -29,7 +29,7 @@ import com.zdd.assistant.util.ActivityCollector;
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     // TODO: 2017/2/15 布局上方可展示天气信息
-    
+
     private DrawerLayout mDrawer;
     //功能列表
     private RecyclerView mRvFuctions;
@@ -85,6 +85,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     /**
      * 侧滑菜单项点击事件监听
+     *
      * @param item
      * @return
      */
@@ -108,7 +109,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         return true;
     }
 
-    public static void actionStart(Context context){
+    public static void actionStart(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
     }

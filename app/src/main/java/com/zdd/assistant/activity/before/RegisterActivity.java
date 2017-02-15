@@ -105,8 +105,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         showProgressDialog("注册中，请稍后~");
         //进行注册
         MyUser myUser = new MyUser();
-        myUser.setUsername(mEdtUserName.getText().toString());
-        myUser.setPassword(mPwvPassword.getText().toString());
+        myUser.setUsername(mEdtUserName.getText()
+                                       .toString());
+        myUser.setPassword(mPwvPassword.getText()
+                                       .toString());
         myUser.signUp(new SaveListener<MyUser>() {
             @Override
             public void done(MyUser myUser, BmobException e) {
@@ -137,7 +139,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             ToastUtil.showToast(this, "请再次输入密码以确认~");
             return false;
         }
-        if (!mPwvPassword.getText().toString().equals(mPwvPasswordConfirm.getText().toString())) {
+        if (!mPwvPassword.getText()
+                         .toString()
+                         .equals(mPwvPasswordConfirm.getText()
+                                                    .toString())) {
             ToastUtil.showToast(this, "两次密码输入不一致，请检查后重新输入~");
             return false;
         }
@@ -151,7 +156,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         dismissProgressDialog();
         ToastUtil.showToast(RegisterActivity.this, "注册成功，请登录~");
         //通知登录界面
-        EventBus.getDefault().post(new RegisterSuccessEvent(mEdtUserName.getText().toString()));
+        EventBus.getDefault()
+                .post(new RegisterSuccessEvent(mEdtUserName.getText()
+                                                           .toString()));
         finish();
     }
 

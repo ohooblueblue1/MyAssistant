@@ -12,35 +12,31 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper;
 /**
  * Project Name: MyAssistant
  * File Name:    SwipeBackActivity.java
- *
+ * <p>
  * Description: 手势侧滑关闭页面
  *
  * @author ZDD
  * @date 2017年02月15日 16:29
- *
  */
-public class SwipeBackActivity extends AppCompatActivity implements SwipeBackActivityBase
-{
+public class SwipeBackActivity extends AppCompatActivity implements SwipeBackActivityBase {
+    
     private SwipeBackActivityHelper mHelper;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mHelper = new SwipeBackActivityHelper(this);
         mHelper.onActivityCreate();
     }
 
     @Override
-    protected void onPostCreate(Bundle savedInstanceState)
-    {
+    protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         mHelper.onPostCreate();
     }
 
     @Override
-    public View findViewById(int id)
-    {
+    public View findViewById(int id) {
         View v = super.findViewById(id);
         if (v == null && mHelper != null)
             return mHelper.findViewById(id);
@@ -48,20 +44,17 @@ public class SwipeBackActivity extends AppCompatActivity implements SwipeBackAct
     }
 
     @Override
-    public SwipeBackLayout getSwipeBackLayout()
-    {
+    public SwipeBackLayout getSwipeBackLayout() {
         return mHelper.getSwipeBackLayout();
     }
 
     @Override
-    public void setSwipeBackEnable(boolean enable)
-    {
+    public void setSwipeBackEnable(boolean enable) {
         getSwipeBackLayout().setEnableGesture(enable);
     }
 
     @Override
-    public void scrollToFinishActivity()
-    {
+    public void scrollToFinishActivity() {
         Utils.convertActivityToTranslucent(this);
         getSwipeBackLayout().scrollToFinishActivity();
     }

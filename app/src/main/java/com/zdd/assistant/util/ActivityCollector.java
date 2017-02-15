@@ -19,7 +19,7 @@ public class ActivityCollector {
     public static List<Activity> activities = new ArrayList<Activity>();
 
     public static void addActivity(Activity activity) {
-        if(!activities.contains(activity)){
+        if (!activities.contains(activity)) {
             activities.add(activity);
         }
     }
@@ -39,7 +39,7 @@ public class ActivityCollector {
     public static void finishAllOther(Activity activity) {
         for (Activity activityToClose : activities) {
             if (!activityToClose.isFinishing()) {
-                if(activityToClose != activity){
+                if (activityToClose != activity) {
                     activityToClose.finish();
                 }
             }

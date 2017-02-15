@@ -48,14 +48,16 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         setContentView(R.layout.activity_login);
 
         //注册EventBus
-        EventBus.getDefault().register(this);
+        EventBus.getDefault()
+                .register(this);
         initView();
     }
 
     @Override
     protected void onDestroy() {
         //反注册EventBus
-        EventBus.getDefault().unregister(this);
+        EventBus.getDefault()
+                .unregister(this);
         super.onDestroy();
     }
 
@@ -98,8 +100,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         showProgressDialog("登录中，请稍后~");
         //进行登录
         MyUser myUser = new MyUser();
-        myUser.setUsername(mEdtAccount.getText().toString());
-        myUser.setPassword(mPwVPassword.getText().toString());
+        myUser.setUsername(mEdtAccount.getText()
+                                      .toString());
+        myUser.setPassword(mPwVPassword.getText()
+                                       .toString());
         myUser.login(new SaveListener<MyUser>() {
             @Override
             public void done(MyUser myUser, BmobException e) {
@@ -162,7 +166,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         mEdtAccount.setText(event.getAccount());
     }
 
-    public static void actionStart(Context context){
+    public static void actionStart(Context context) {
         Intent intent = new Intent(context, LoginActivity.class);
         context.startActivity(intent);
     }
