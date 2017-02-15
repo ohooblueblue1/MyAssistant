@@ -2,7 +2,6 @@ package com.zdd.assistant.base;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.zdd.assistant.util.ActivityCollector;
@@ -22,9 +21,11 @@ public class BaseActivity extends AppCompatActivity {
 
     private ProgressDialog mProgressDialog;
 
+
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
         //添加到Activity管理类中
         ActivityCollector.addActivity(this);
     }

@@ -16,19 +16,20 @@ import java.util.List;
  */
 public class ActivityCollector {
 
-    //存放所有Activity
-    public static List<Activity> sActivities = new ArrayList<Activity>();
+    public static List<Activity> activities = new ArrayList<Activity>();
 
     public static void addActivity(Activity activity) {
-        sActivities.add(activity);
+        if(!activities.contains(activity)){
+            activities.add(activity);
+        }
     }
 
     public static void removeActivity(Activity activity) {
-        sActivities.remove(activity);
+        activities.remove(activity);
     }
 
     public static void finishAll() {
-        for (Activity activity : sActivities) {
+        for (Activity activity : activities) {
             if (!activity.isFinishing()) {
                 activity.finish();
             }
@@ -36,9 +37,11 @@ public class ActivityCollector {
     }
 
     public static void finishAllOther(Activity activity) {
-        for (Activity activityToClose : sActivities) {
-            if (!activityToClose.isFinishing() && activityToClose != activity) {
-                activityToClose.finish();
+        for (Activity activityToClose : activities) {
+            if (!activityToClose.isFinishing()) {
+                if(activityToClose != activity){
+                    activityToClose.finish();
+                }
             }
         }
     }
