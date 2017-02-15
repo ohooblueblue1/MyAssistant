@@ -31,10 +31,13 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         initView();
     }
 
     private void initView() {
+        //设置此页面不能侧滑关闭
+        setSwipeBackEnable(false);
         //关闭其他Activity
         ActivityCollector.finishAllOther(this);
         //初始化toolbar

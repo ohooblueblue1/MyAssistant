@@ -34,4 +34,5 @@ dependencies {
 
     compile 'com.xwray:passwordview:1.0'
     compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'me.imid.swipebacklayout.lib:library:1.0.0'
 }

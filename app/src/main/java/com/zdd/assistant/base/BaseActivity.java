@@ -2,7 +2,6 @@ package com.zdd.assistant.base;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.zdd.assistant.util.ActivityCollector;
 import com.zdd.assistant.util.NetworkUtil;
@@ -17,7 +16,7 @@ import com.zdd.assistant.util.ToastUtil;
  * @author zdd
  * @date 2017年02月05日 21:11
  */
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends SwipeBackActivity {
 
     private ProgressDialog mProgressDialog;
 

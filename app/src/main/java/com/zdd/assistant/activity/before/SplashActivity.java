@@ -32,6 +32,8 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        //设置此页面不能侧滑关闭
+        setSwipeBackEnable(false);
         checkIsUserInfoExisit();
     }
 
