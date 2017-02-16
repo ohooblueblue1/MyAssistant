@@ -12,7 +12,7 @@ import com.xwray.passwordview.PasswordView;
 import com.zdd.assistant.R;
 import com.zdd.assistant.activity.main.MainActivity;
 import com.zdd.assistant.base.BaseActivity;
-import com.zdd.assistant.entity.MyUser;
+import com.zdd.assistant.entity.primary.MyUser;
 import com.zdd.assistant.entity.event.RegisterSuccessEvent;
 import com.zdd.assistant.util.TextUtil;
 import com.zdd.assistant.util.ToastUtil;

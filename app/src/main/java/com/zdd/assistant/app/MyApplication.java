@@ -56,4 +56,12 @@ public class MyApplication extends Application {
         return sContext;
     }
 
+
+    // TODO: 项目模块
+    // TODO: 天气
+    // TODO: 记事本
+    // TODO: 菜谱
+    // TODO: 聊天机器人
+    // TODO: 词典
+
 }
