@@ -1,15 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_main"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.zdd.assistant.activity.main.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    android:paddingTop="?attr/actionBarSize"
+    tools:context="com.zdd.assistant.activity.main.MainActivity">
 
+    <RelativeLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
 
+        <TextView
+            android:text="天气信息"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-</RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_tab_cook"
+            android:layout_width="0dp"
+            android:layout_marginRight="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/ripple_round_main"
+            android:padding="30dp">
+
+            <ImageView
+                android:id="@+id/iv_cook"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/main_tab_cook"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_cook"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"
+                android:text="菜谱"
+                android:textColor="#fff"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_tab_guide"
+            android:layout_width="0dp"
+            android:layout_marginLeft="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/ripple_round_main"
+            android:padding="30dp">
+
+            <ImageView
+                android:id="@+id/iv_guide"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/main_tab_cook"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_guide"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"
+                android:text="指南针"
+                android:textColor="#fff"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_tab_notepad"
+            android:layout_width="0dp"
+            android:layout_marginRight="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/ripple_round_main"
+            android:padding="30dp">
+
+            <ImageView
+                android:id="@+id/iv_notepad"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/main_tab_notepad"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_notepad"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"
+                android:text="记事本"
+                android:textColor="#fff"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_tab_robot"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/ripple_round_main"
+            android:padding="30dp">
+
+            <ImageView
+                android:id="@+id/iv_robot"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/main_tab_robot"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_robot"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"
+                android:text="智能机器人"
+                android:textColor="#fff"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"/>
+
+</LinearLayout>

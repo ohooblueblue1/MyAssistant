@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.zdd.assistant.R;
 import com.zdd.assistant.base.BaseActivity;
@@ -23,7 +24,7 @@ import com.zdd.assistant.util.ActivityCollector;
  * @author zdd
  * @date 2017年02月05日 21:13
  */
-public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     // TODO: 2017/2/15 布局上方可展示天气信息
 
@@ -55,7 +56,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
+        //设置四个功能tab监听
+        findViewById(R.id.rl_tab_cook).setOnClickListener(this);
+        findViewById(R.id.rl_tab_guide).setOnClickListener(this);
+        findViewById(R.id.rl_tab_notepad).setOnClickListener(this);
+        findViewById(R.id.rl_tab_robot).setOnClickListener(this);
     }
 
     /**
@@ -100,5 +105,10 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public static void actionStart(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
