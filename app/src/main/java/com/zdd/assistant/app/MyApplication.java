@@ -58,10 +58,10 @@ public class MyApplication extends Application {
 
 
     // TODO: 项目模块
-    // TODO: 天气
-    // TODO: 记事本
-    // TODO: 菜谱
-    // TODO: 聊天机器人
-    // TODO: 词典
+    // 天气 -- 心知天气   http://www.thinkpage.cn/doc
+    // 记事本 -- bmob后端云   http://docs.bmob.cn/data/Android/a_faststart/doc/index.html#初始化BmobSDK
+    // 菜谱 -- 天狗健康菜谱   http://www.tngou.net/doc/cook/67
+    // 聊天机器人 -- 图灵机器人  http://www.tuling123.com/member/apistrore/index.jhtml
+    // 词典 or 指南针
 
 }
