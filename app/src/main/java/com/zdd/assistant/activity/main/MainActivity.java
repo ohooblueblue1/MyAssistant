@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.zdd.assistant.R;
 import com.zdd.assistant.base.BaseActivity;
+import com.zdd.assistant.provider.WeatherProvider;
 import com.zdd.assistant.util.ActivityCollector;
 
 /**
@@ -46,6 +47,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     //紫外线强度
     private TextView mTvUv;
 
+    private WeatherProvider mWeatherProvider;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -53,6 +56,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         setContentView(R.layout.activity_main);
 
         initView();
+        initDataProVider();
     }
 
     private void initView()
@@ -86,6 +90,16 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
+
+    /**
+     * 初始化数据提供者
+     */
+    private void initDataProVider()
+    {
+        mWeatherProvider = new WeatherProvider();
+    }
+
 
     /**
      * 按下返回键
