@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="?attr/actionBarSize"
+    tools:showIn="@layout/app_bar_main"
     tools:context="com.zdd.assistant.activity.main.MainActivity">
 
     <RelativeLayout
@@ -143,7 +144,7 @@
     </LinearLayout>
 
     <View
-        android:background="#fff"
+        android:background="@color/transparent"
         android:layout_width="match_parent"
         android:layout_height="95dp"/>
 
