@@ -2,6 +2,7 @@ package com.zdd.assistant.activity.main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,6 +21,11 @@ import com.zdd.assistant.entity.weather.WeatherSuggestion;
 import com.zdd.assistant.provider.OnResponseListener;
 import com.zdd.assistant.provider.WeatherProvider;
 import com.zdd.assistant.util.ActivityCollector;
+import com.zdd.assistant.util.DateUtil;
+import com.zdd.assistant.util.ToastUtil;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Project Name: MyAssistant
@@ -95,6 +101,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         mTvCarWashing = (TextView) findViewById(R.id.tv_do_car_washing);
         mTvFlu = (TextView) findViewById(R.id.tv_do_flu);
         mTvUv = (TextView) findViewById(R.id.tv_do_uv);
+
+        //刷新天气按钮
+        findViewById(R.id.iv_refresh_weather).setOnClickListener(this);
     }
 
 
@@ -136,6 +145,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             public void onSuccess(Object response) {
                 fillWeatherSuggestion((WeatherSuggestion) response);
                 dismissProgressDialog();
+                ToastUtil.showToast(MainActivity.this,"天气信息已更新");
             }
 
             @Override
@@ -155,6 +165,14 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                                      .getTemperature());
         mTvWeatherName.setText(result.getNow()
                                      .getText());
+        try {
+            InputStream in = getAssets().open("weather/" + result.getNow()
+                                                                 .getCode() + ".png");
+            mIvWeatherIcon.setImageDrawable(Drawable.createFromStream(in, null));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        mTvUpdateTime.setText(DateUtil.getWeatherTimeString(result.getLast_update()));
     }
 
 
@@ -213,21 +231,25 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         switch (v.getId()) {
 
             case R.id.rl_tab_cook:
-
+                CookActivity.actionStart(MainActivity.this);
                 break;
 
             case R.id.rl_tab_guide:
-
+                GuideActivity.actionStart(MainActivity.this);
                 break;
 
             case R.id.rl_tab_notepad:
-
+                NotePadActivity.actionStart(MainActivity.this);
                 break;
 
             case R.id.rl_tab_robot:
-
+                RobotActivity.actionStart(MainActivity.this);
                 break;
 
+            case R.id.iv_refresh_weather:
+                //刷新天气信息
+                loadWeatherData();
+                break;
         }
     }
 }

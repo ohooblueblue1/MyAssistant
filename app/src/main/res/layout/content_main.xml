@@ -22,12 +22,20 @@
         android:paddingBottom="12dp"
         android:paddingTop="24dp">
 
+        <ImageView
+            android:id="@+id/iv_refresh_weather"
+            android:src="@drawable/refresh"
+            android:layout_marginRight="26dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
         <TextView
             android:id="@+id/tv_city_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="65dp"
+            android:layout_marginRight="25dp"
             android:textColor="#fff"
             android:textSize="16sp"
             android:text="加载中"
@@ -67,7 +75,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="15dp"
                 android:src="@drawable/temperature"/>
 
             <TextView
@@ -79,15 +87,20 @@
                 android:text="加载中"
                 tools:text="多云转雷阵雨"/>
 
-        </LinearLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="1dp"/>
 
-        <ImageView
-            android:id="@+id/iv_weather_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="16dp"
-            tools:src="@drawable/tttttt"/>
+            <ImageView
+                android:id="@+id/iv_weather_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="16dp"
+                android:scaleType="fitXY"
+                tools:src="@drawable/tttttt"/>
+
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
@@ -96,7 +109,8 @@
             android:layout_height="0.7dp"
             android:layout_below="@+id/ll_weather_info"
             android:layout_marginTop="10dp"
-            android:background="@color/colorDivider"/>
+            android:background="@color/colorDivider"
+            android:id="@+id/view"/>
 
         <TextView
             android:id="@+id/tv_do_sport"
@@ -143,7 +157,7 @@
             android:layout_below="@+id/tv_do_sport"
             android:layout_marginTop="8dp"
             tools:text="紫外线强度: 弱"
-            android:text="紫外线强度: 加载中"
+            android:text="运动指数: 加载中"
             android:textColor="#fff"
             android:textSize="16sp"/>
 

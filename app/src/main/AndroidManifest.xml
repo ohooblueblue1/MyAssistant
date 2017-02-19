@@ -16,7 +16,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
-        android:name="com.zdd.assistant.app.MyApplication"
+        android:name=".app.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -25,7 +25,7 @@
 
         <!-- 引导展示页 -->
         <activity
-            android:name="com.zdd.assistant.activity.before.SplashActivity"
+            android:name=".activity.before.SplashActivity"
             android:theme="@style/AppTheme.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -36,22 +36,29 @@
 
         <!-- 登录页面 -->
         <activity
-            android:name="com.zdd.assistant.activity.before.LoginActivity"
+            android:name=".activity.before.LoginActivity"
             android:theme="@style/AppTheme.FullScreen">
         </activity>
 
         <!-- 注册页面 -->
         <activity
-            android:name="com.zdd.assistant.activity.before.RegisterActivity"
+            android:name=".activity.before.RegisterActivity"
             android:label="账号注册">
         </activity>
 
         <!-- 主界面 -->
         <activity
-            android:name="com.zdd.assistant.activity.main.MainActivity"
+            android:name=".activity.main.MainActivity"
             android:label="@string/app_name">
         </activity>
-
+        <activity android:name=".activity.main.CookActivity">
+        </activity>
+        <activity android:name=".activity.main.GuideActivity">
+        </activity>
+        <activity android:name=".activity.main.NotePadActivity">
+        </activity>
+        <activity android:name=".activity.main.RobotActivity">
+        </activity>
     </application>
 
 </manifest>
