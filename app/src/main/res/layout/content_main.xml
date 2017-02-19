@@ -7,13 +7,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingTop="?attr/actionBarSize"
+    tools:showIn="@layout/app_bar_main"
     tools:context="com.zdd.assistant.activity.main.MainActivity">
-    <!--tools:showIn="@layout/app_bar_main"-->
+
 
     <RelativeLayout
         android:id="@+id/rl_tab_weather"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:background="@drawable/shape_main_weather"
@@ -89,6 +91,8 @@
 
         <View
             android:layout_width="match_parent"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
             android:layout_height="0.7dp"
             android:layout_below="@+id/ll_weather_info"
             android:layout_marginTop="10dp"
@@ -188,7 +192,7 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/main_tab_cook"/>
+                android:src="@drawable/main_tab_guide"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -265,7 +269,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="95dp"
+        android:layout_height="40dp"
         android:background="@color/transparent"/>
 
 </LinearLayout>
