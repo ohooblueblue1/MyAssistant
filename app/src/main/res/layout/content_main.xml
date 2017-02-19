@@ -28,9 +28,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="65dp"
-            android:text="厦门市"
             android:textColor="#fff"
             android:textSize="16sp"
+            android:text="加载中"
             tools:text="厦门市"/>
 
         <TextView
@@ -38,9 +38,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/tv_city_name"
-            android:text="10:30 发布"
             android:textColor="#fff"
             android:textSize="16sp"
+            android:text="加载中"
             tools:text="10:30 发布"/>
 
 
@@ -59,9 +59,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
-                android:text="17"
                 android:textColor="#fff"
                 android:textSize="32sp"
+                android:text="0"
                 tools:text="17"/>
 
             <ImageView
@@ -74,9 +74,9 @@
                 android:id="@+id/tv_weater_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="多云转雷阵雨"
                 android:textColor="#fff"
                 android:textSize="20sp"
+                android:text="加载中"
                 tools:text="多云转雷阵雨"/>
 
         </LinearLayout>
@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="16dp"
-            android:src="@drawable/tttttt"/>
+            tools:src="@drawable/tttttt"/>
 
         <View
             android:layout_width="match_parent"
@@ -105,7 +105,8 @@
             android:layout_below="@+id/ll_weather_info"
             android:layout_marginLeft="32dp"
             android:layout_marginTop="40dp"
-            android:text="运动指数: 较适宜"
+            tools:text="运动指数: 较适宜"
+            android:text="运动指数: 加载中"
             android:textColor="#fff"
             android:textSize="16sp"/>
 
@@ -117,7 +118,8 @@
             android:layout_below="@+id/ll_weather_info"
             android:layout_marginRight="32dp"
             android:layout_marginTop="40dp"
-            android:text="流感指数: 较易发"
+            tools:text="流感指数: 较易发"
+            android:text="流感指数: 加载中"
             android:textColor="#fff"
             android:textSize="16sp"/>
 
@@ -128,7 +130,8 @@
             android:layout_alignLeft="@+id/tv_do_sport"
             android:layout_below="@+id/tv_do_sport"
             android:layout_marginTop="8dp"
-            android:text="洗车指数: 不适宜"
+            tools:text="洗车指数: 不适宜"
+            android:text="洗车指数: 加载中"
             android:textColor="#fff"
             android:textSize="16sp"/>
 
@@ -139,7 +142,8 @@
             android:layout_alignLeft="@+id/tv_do_flu"
             android:layout_below="@+id/tv_do_sport"
             android:layout_marginTop="8dp"
-            android:text="紫外线强度: 弱"
+            tools:text="紫外线强度: 弱"
+            android:text="紫外线强度: 加载中"
             android:textColor="#fff"
             android:textSize="16sp"/>
 
