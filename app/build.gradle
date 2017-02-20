@@ -43,6 +43,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.1.1'
     //volley
     //一个为公司环境，一个为宿舍环境
-    compile files('E:/AndroidProject/MyAssistant/libs/library-1.0.19.jar')
-    //compile files('D:/AndroidStudioPrj/MyAssistant/libs/library-1.0.19.jar')
+    //compile files('E:/AndroidProject/MyAssistant/libs/library-1.0.19.jar')
+    compile files('D:/AndroidStudioPrj/MyAssistant/libs/library-1.0.19.jar')
 }

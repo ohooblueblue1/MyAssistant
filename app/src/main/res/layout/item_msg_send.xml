@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/msg_send"
+        android:layout_marginTop="6dp"
+        android:layout_toLeftOf="@+id/iv_user"
+        android:layout_alignTop="@+id/iv_user"
+        android:layout_width="wrap_content"
+        android:gravity="left"
+        tools:text="今天天气错气不错错今天天气不错今天天气不错今天天气不错今天天气不错今天天气不错今天天气不错今天天气不错今天天气不错今天天气不错今天天气不错今天天气不错"
+        android:layout_height="wrap_content"
+        android:background="@drawable/msg_send"
+        android:textSize="18sp"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_marginTop="6dp"
+        android:id="@+id/iv_user"
+        android:layout_marginLeft="4dp"
+        android:src="@drawable/user_default"
+        android:layout_alignParentRight="true"
+        android:scaleType="centerCrop"
+        android:layout_width="38dp"
+        android:layout_height="38dp" />
+
+</RelativeLayout>

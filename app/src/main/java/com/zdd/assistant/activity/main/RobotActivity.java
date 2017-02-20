@@ -16,6 +16,11 @@ import com.zdd.assistant.R;
 import com.zdd.assistant.adapter.RobotMsgAdapter;
 import com.zdd.assistant.base.BaseActivity;
 import com.zdd.assistant.entity.robot.Message;
+import com.zdd.assistant.entity.robot.Result;
+import com.zdd.assistant.provider.OnResponseListener;
+import com.zdd.assistant.provider.RobotMsgProvider;
+import com.zdd.assistant.util.TextUtil;
+import com.zdd.assistant.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +35,8 @@ public class RobotActivity extends BaseActivity implements View.OnClickListener
     private RecyclerView mRvMessage;
     private RobotMsgAdapter mAdapter;
     private List<Message> mMessagesList;
+
+    private RobotMsgProvider mRobotMsgProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +67,7 @@ public class RobotActivity extends BaseActivity implements View.OnClickListener
         mRvMessage.setLayoutManager(new LinearLayoutManager(this));
         mRvMessage.setAdapter(mAdapter);
 
+        mRobotMsgProvider = new RobotMsgProvider();
     }
 
     //Toolbar菜单点击事件监听
@@ -86,7 +94,7 @@ public class RobotActivity extends BaseActivity implements View.OnClickListener
         switch (v.getId()){
 
             case R.id.btn_send:
-
+                tryToSendMsg();
                 break;
 
             case R.id.btn_speak:
@@ -94,5 +102,48 @@ public class RobotActivity extends BaseActivity implements View.OnClickListener
                 break;
 
         }
+    }
+
+    /**
+     * 尝试发送消息
+     */
+    private void tryToSendMsg() {
+        if(TextUtil.isEmpty(mEdtMsg)){
+            ToastUtil.showToast(this,"不能发送空消息哦~");
+            return;
+        }
+        if(!checkIsNetAvailable()){
+            return;
+        }
+
+        mRobotMsgProvider.sendMessage(mEdtMsg.getText()
+                                             .toString(), new OnResponseListener() {
+            @Override
+            public void onBefore() {
+                Message message = new Message();
+                message.setType(Message.TYPE_SEND);
+                message.setContent(mEdtMsg.getText().toString());
+                mEdtMsg.setText("");
+                mMessagesList.add(message);
+                mAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onSuccess(Object response) {
+                Result result = (Result) response;
+                Message message = new Message();
+                message.setType(Message.TYPE_RECEIEVE);
+                message.setContent(result.getText());
+                mMessagesList.add(message);
+                mAdapter.notifyDataSetChanged();
+                mRvMessage.smoothScrollToPosition(mMessagesList.size());
+            }
+
+            @Override
+            public void onFailure() {
+                ToastUtil.showToast(RobotActivity.this,"消息发送失败");
+            }
+        });
+
     }
 }

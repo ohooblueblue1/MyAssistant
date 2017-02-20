@@ -15,6 +15,15 @@ package com.zdd.assistant.entity.robot;
 public class Message
 {
     /**
+     * 标识发出的消息
+     */
+    public static final int TYPE_SEND = 1;
+    /**
+     * 标识收到的消息
+     */
+    public static final int TYPE_RECEIEVE = 2;
+
+    /**
      * 信息类型
      */
     private int mType;
@@ -24,4 +33,19 @@ public class Message
      */
     private String mContent;
 
+    public int getType() {
+        return mType;
+    }
+
+    public void setType(int type) {
+        mType = type;
+    }
+
+    public String getContent() {
+        return mContent;
+    }
+
+    public void setContent(String content) {
+        mContent = content;
+    }
 }

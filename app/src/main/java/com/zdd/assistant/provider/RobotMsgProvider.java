@@ -4,7 +4,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.gson.Gson;
 import com.zdd.assistant.app.MyApplication;
+import com.zdd.assistant.entity.robot.Result;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,7 +38,9 @@ public class RobotMsgProvider {
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, API_URL, getParams(info), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
-                listener.onSuccess(jsonObject);
+                Gson gson = new Gson();
+                Result result = gson.fromJson(jsonObject.toString(), Result.class);
+                listener.onSuccess(result);
             }
         }, new Response.ErrorListener() {
             @Override
