@@ -19,6 +19,7 @@
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
+        android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
@@ -55,11 +56,10 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_cook"
+        android:layout_below="@+id/ll"
+        android:layout_marginTop="4dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
-        android:clipToPadding="true"
-        android:paddingTop="55dp">
+        android:layout_height="wrap_content">
     </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

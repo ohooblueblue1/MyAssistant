@@ -38,6 +38,7 @@ public class CookProvider
             public void onResponse(JSONObject jsonObject) {
                 if(jsonObject.optInt("code") != 308000){
                     ToastUtil.showToast(MyApplication.getAppContext(),"对不起，未查找到您要的菜谱信息");
+                    listener.onFailure();
                     return;
                 }
                 Gson gson = new Gson();
