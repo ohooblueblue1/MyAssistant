@@ -75,7 +75,7 @@ public class CookList {
         private String description;
         private int fcount;
         private String food;
-        private int id;
+        private long id;
         private String images;
         private String img;
         private String keywords;
@@ -122,12 +122,12 @@ public class CookList {
             this.food = food;
         }
 
-        public int getId()
+        public long getId()
         {
             return id;
         }
 
-        public void setId(int id)
+        public void setId(long id)
         {
             this.id = id;
         }

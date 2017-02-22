@@ -24,7 +24,9 @@ public class CookProvider
 
     public static final String URL_COOK_LIST = "http://www.tngou.net/api/cook/list?id=";
 
-    public static final String URL_COOK_DETAIL = "http://www.tngou.net/api/food/show?id=";
+    public static final String URL_COOK_DETAIL = "http://www.tngou.net/api/cook/show?id=";
+
+
 
     /**
      * 根据分类id获取该分类下菜谱列表
@@ -54,7 +56,7 @@ public class CookProvider
                      .add(gsonRequest);
     }
 
-    public void getCookDetail(int id, final OnResponseListener listener)
+    public void getCookDetail(long id, final OnResponseListener listener)
     {
         listener.onBefore();
         GsonRequest<CookDetail> gsonRequest = new GsonRequest<CookDetail>(URL_COOK_DETAIL + id, CookDetail.class, new Response.Listener<CookDetail>()
@@ -72,6 +74,7 @@ public class CookProvider
                 listener.onFailure();
             }
         });
+        MyApplication.getRequestQueue().add(gsonRequest);
     }
 
 

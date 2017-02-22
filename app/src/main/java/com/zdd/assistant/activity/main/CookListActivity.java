@@ -116,9 +116,9 @@ public class CookListActivity extends BaseActivity implements CookListAdapter.On
 
 
     @Override
-    public void onItemClick(View view, int position)
+    public void onItemClick(View view, long position)
     {
-        CookDetailActivity.actionStart(this,mTngouBeanList.get(position).getId());
+        CookDetailActivity.actionStart(this,position);
     }
 
     @Override

@@ -74,7 +74,7 @@ public class CookListAdapter extends RecyclerView.Adapter<CookListAdapter.CookLi
                 @Override
                 public void onClick(View v) {
                     int position = holder.getLayoutPosition();
-                    mListener.onItemClick(holder.itemView,position);
+                    mListener.onItemClick(holder.itemView,mTngouBeanList.get(position).getId());
                 }
             });
 
@@ -118,7 +118,7 @@ public class CookListAdapter extends RecyclerView.Adapter<CookListAdapter.CookLi
 
     //定义点击，长按事件监听接口
     public interface OnItemClickListener{
-        void onItemClick(View view, int position);
+        void onItemClick(View view, long position);
         void onItemLongClick(View view,int position);
     }
 }
