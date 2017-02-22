@@ -8,9 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zdd.assistant.R;
-import com.zdd.assistant.entity.cook.CookList;
-
-import java.util.List;
 
 /**
  * Project Name: MyAssistant
@@ -24,11 +21,10 @@ import java.util.List;
 public class CookAdapter extends RecyclerView.Adapter<CookAdapter.CookHolder> {
 
     private Context mContext;
-    private List<CookList.ListBean> mListBeens;
 
-    public CookAdapter(Context context, List<CookList.ListBean> listBeens) {
+    public CookAdapter(Context context) {
         mContext = context;
-        mListBeens = listBeens;
+
     }
 
     @Override
@@ -40,14 +36,12 @@ public class CookAdapter extends RecyclerView.Adapter<CookAdapter.CookHolder> {
 
     @Override
     public void onBindViewHolder(CookHolder holder, int position) {
-        CookList.ListBean listBean = mListBeens.get(position);
-        holder.mTvName.setText(listBean.getName());
-        holder.mInfo.setText(listBean.getInfo());
+
     }
 
     @Override
     public int getItemCount() {
-        return mListBeens.size();
+        return 0;
     }
 
     static class CookHolder extends RecyclerView.ViewHolder {
@@ -58,8 +52,7 @@ public class CookAdapter extends RecyclerView.Adapter<CookAdapter.CookHolder> {
         public CookHolder(View itemView) {
             super(itemView);
 
-            mInfo = (TextView) itemView.findViewById(R.id.tv_info);
-            mTvName = (TextView) itemView.findViewById(R.id.tv_name);
+
         }
 
     }

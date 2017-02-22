@@ -43,15 +43,6 @@
             android:paddingRight="17dp"
             android:paddingTop="6dp"/>
 
-        <TextView
-            android:id="@+id/btn_search"
-            android:layout_width="50dp"
-            android:layout_height="32dp"
-            android:layout_marginLeft="4dp"
-            android:background="@drawable/btn_send_msg"
-            android:gravity="center"
-            android:text="搜索"
-            android:textSize="12sp"/>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
