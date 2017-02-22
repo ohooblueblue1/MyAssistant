@@ -3,24 +3,24 @@ package com.zdd.assistant.activity.main;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 
 import com.zdd.assistant.R;
-import com.zdd.assistant.adapter.CookAdapter;
+import com.zdd.assistant.adapter.CookMenuAdapter;
 import com.zdd.assistant.base.BaseActivity;
 import com.zdd.assistant.entity.cook.CookMenu;
-import com.zdd.assistant.provider.CookProvider;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CookActivity extends BaseActivity {
 
-    private RecyclerView mRvCook;
-    private CookAdapter mAdapter;
-    private CookProvider mCookProvider;
+    private GridView mGvCookMenu;
+    private CookMenuAdapter mAdapter;
 
     private List<CookMenu> mListMenus;
     private final int[] mArrIds = {1, 10, 15, 52, 62, 68, 75, 82, 98, 112, 147, 161, 218, 166, 182, 188,
@@ -41,7 +41,6 @@ public class CookActivity extends BaseActivity {
         setContentView(R.layout.activity_cook);
 
         initView();
-        mCookProvider = new CookProvider();
     }
 
     private void initView() {
@@ -49,8 +48,19 @@ public class CookActivity extends BaseActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //初始化菜谱分类菜单
+        mGvCookMenu = (GridView) findViewById(R.id.gv_menu);
+        mAdapter = new CookMenuAdapter(addMenus(),this);
+        mGvCookMenu.setAdapter(mAdapter);
 
-
+        mGvCookMenu.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                CookListActivity.actionStart(CookActivity.this,mArrIds[position],mArrNames[position]);
+            }
+        });
     }
 
     //Toolbar菜单点击事件监听
@@ -71,18 +81,6 @@ public class CookActivity extends BaseActivity {
         Intent intent = new Intent(context, CookActivity.class);
         context.startActivity(intent);
     }
-
-
-    private void tryToSearchCook() {
-//        if (TextUtil.isEmpty(mEdtSearch)) {
-//            ToastUtil.showToast(this, "请先输入您要查询的内容哦~");
-//            return;
-//        }
-        if (!checkIsNetAvailable()) {
-            return;
-        }
-    }
-
 
     /**
      * 给菜单分类List添加数据

@@ -18,39 +18,42 @@
         app:titleTextColor="#fff">
     </android.support.v7.widget.Toolbar>
 
-    <LinearLayout
-        android:id="@+id/ll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <!--<LinearLayout-->
+        <!--android:id="@+id/ll"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/toolbar"-->
+        <!--android:layout_marginLeft="8dp"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:layout_marginRight="8dp"-->
+        <!--android:layout_marginTop="12dp"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/edt_search"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_marginRight="5dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@drawable/shape_search"-->
+            <!--android:hint="搜索一下 美味马上来~"-->
+            <!--android:maxLines="1"-->
+            <!--android:paddingBottom="6dp"-->
+            <!--android:paddingLeft="17dp"-->
+            <!--android:paddingRight="17dp"-->
+            <!--android:paddingTop="6dp"/>-->
+
+    <!--</LinearLayout>-->
+
+
+    <GridView
+        android:id="@+id/gv_menu"
+        android:paddingTop="4dp"
+        android:clipToPadding="false"
         android:layout_below="@+id/toolbar"
-        android:layout_marginLeft="8dp"
-        android:gravity="center_vertical"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="12dp"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/edt_search"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_marginRight="5dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_search"
-            android:hint="搜索一下 美味马上来~"
-            android:maxLines="1"
-            android:paddingBottom="6dp"
-            android:paddingLeft="17dp"
-            android:paddingRight="17dp"
-            android:paddingTop="6dp"/>
-
-    </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_cook"
-        android:layout_below="@+id/ll"
-        android:layout_marginTop="4dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"
+        android:numColumns="3"
+        android:scrollbars="none" />
 
 </RelativeLayout>
