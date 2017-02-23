@@ -48,24 +48,24 @@
 
         <!-- 主界面 -->
         <activity
-            android:name=".activity.main.MainActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/app_name">
         </activity>
         <activity
-            android:name=".activity.main.CookActivity"
+            android:name=".activity.cook.CookActivity"
             android:label="菜谱">
         </activity>
-        <activity android:name=".activity.main.GuideActivity">
+        <activity android:name=".activity.guide.GuideActivity">
         </activity>
-        <activity android:name=".activity.main.NotePadActivity">
+        <activity android:name=".activity.notepad.NotePadActivity">
         </activity>
         <activity
-            android:name=".activity.main.RobotActivity"
+            android:name=".activity.robot.RobotActivity"
             android:label="智能机器人">
         </activity>
-        <activity android:name=".activity.main.CookListActivity">
+        <activity android:name=".activity.cook.CookListActivity">
         </activity>
-        <activity android:name=".activity.main.CookDetailActivity">
+        <activity android:name=".activity.cook.CookDetailActivity">
         </activity>
     </application>
 

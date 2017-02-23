@@ -1,4 +1,4 @@
-package com.zdd.assistant.activity.main;
+package com.zdd.assistant.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zdd.assistant.R;
+import com.zdd.assistant.activity.cook.CookActivity;
+import com.zdd.assistant.activity.guide.GuideActivity;
+import com.zdd.assistant.activity.notepad.NotePadActivity;
+import com.zdd.assistant.activity.robot.RobotActivity;
 import com.zdd.assistant.base.BaseActivity;
 import com.zdd.assistant.entity.weather.WeatherNow;
 import com.zdd.assistant.entity.weather.WeatherSuggestion;

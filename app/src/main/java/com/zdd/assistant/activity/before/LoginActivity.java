@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.xwray.passwordview.PasswordView;
 import com.zdd.assistant.R;
-import com.zdd.assistant.activity.main.MainActivity;
+import com.zdd.assistant.activity.MainActivity;
 import com.zdd.assistant.base.BaseActivity;
 import com.zdd.assistant.entity.primary.MyUser;
 import com.zdd.assistant.entity.event.RegisterSuccessEvent;

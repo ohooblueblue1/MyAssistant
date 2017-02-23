@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.zdd.assistant.R;
-import com.zdd.assistant.activity.main.MainActivity;
+import com.zdd.assistant.activity.MainActivity;
 import com.zdd.assistant.base.BaseActivity;
 
 import cn.bmob.v3.BmobUser;

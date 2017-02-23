@@ -1,4 +1,4 @@
-package com.zdd.assistant.activity.main;
+package com.zdd.assistant.activity.cook;
 
 import android.content.Context;
 import android.content.Intent;
@@ -118,7 +118,7 @@ public class CookListActivity extends BaseActivity implements CookListAdapter.On
     @Override
     public void onItemClick(View view, long position)
     {
-        CookDetailActivity.actionStart(this,position);
+        CookDetailActivity.actionStart(this, position);
     }
 
     @Override

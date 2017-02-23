@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#e2e2e2"
-    tools:context="com.zdd.assistant.activity.main.RobotActivity">
+    tools:context="com.zdd.assistant.activity.robot.RobotActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"

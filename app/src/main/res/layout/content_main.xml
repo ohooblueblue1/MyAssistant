@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:paddingTop="?attr/actionBarSize"
     tools:showIn="@layout/app_bar_main"
-    tools:context="com.zdd.assistant.activity.main.MainActivity">
+    tools:context="com.zdd.assistant.activity.MainActivity">
 
 
     <RelativeLayout

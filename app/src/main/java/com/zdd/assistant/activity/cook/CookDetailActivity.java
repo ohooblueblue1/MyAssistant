@@ -1,4 +1,4 @@
-package com.zdd.assistant.activity.main;
+package com.zdd.assistant.activity.cook;
 
 import android.content.Context;
 import android.content.Intent;
