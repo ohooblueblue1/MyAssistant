@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--波纹点击效果-->
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-        android:color="#0c9b5f">
+        android:color="#c4c4c4">
 
     <item>
         <shape android:shape="rectangle">
             <corners android:radius="3dp"/>
-            <solid android:color="#f21cc17c"/>
+            <solid android:color="#FDFDFE"/>
         </shape>
     </item>
 

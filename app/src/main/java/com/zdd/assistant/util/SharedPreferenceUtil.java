@@ -5,36 +5,37 @@ import android.content.SharedPreferences;
 
 /**
  * Project Name: MyAssistant
- * File Name:    SpHelper.java
- * ClassName:    SpHelper
+ * File Name:    SharedPreferenceUtil.java
+ * ClassName:    SharedPreferenceUtil
  *
  * Description: TODO.
  *
  * @author ZDD
  * @date 2017年02月23日 17:42
  */
-public class SpHelper {
+public class SharedPreferenceUtil
+{
 
     private static final String SP_NAME = "sp_name";
-    private static SpHelper mSpHelper;
+    private static SharedPreferenceUtil sMSharedPreferenceUtil;
     private Context mAppContext;
     private SharedPreferences mSharedPreferences;
     private String info;
 
-    private SpHelper(Context context){
+    private SharedPreferenceUtil(Context context){
         mAppContext = context.getApplicationContext();
     }
 
     //获取SpHelper的实例
-    public static SpHelper getInstance(Context context){
-        if(mSpHelper == null){
-            synchronized (SpHelper.class){
-                if(mSpHelper == null){
-                    mSpHelper = new SpHelper(context);
+    public static SharedPreferenceUtil getInstance(Context context){
+        if(sMSharedPreferenceUtil == null){
+            synchronized (SharedPreferenceUtil.class){
+                if(sMSharedPreferenceUtil == null){
+                    sMSharedPreferenceUtil = new SharedPreferenceUtil(context);
                 }
             }
         }
-        return mSpHelper;
+        return sMSharedPreferenceUtil;
     }
 
     private SharedPreferences getSharePreferences(){

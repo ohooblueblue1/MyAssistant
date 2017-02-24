@@ -6,8 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="?attr/actionBarSize"
+    android:layout_marginTop="45dp"
     tools:showIn="@layout/app_bar_main"
+    android:background="@drawable/bg_main"
     tools:context="com.zdd.assistant.activity.MainActivity">
 
 
@@ -18,7 +19,6 @@
         android:layout_marginTop="12dp"
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
-        android:background="@drawable/shape_main_weather"
         android:paddingBottom="12dp"
         android:paddingTop="24dp">
 
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="25dp"
-            android:textColor="#fff"
+            android:textColor="@color/colorPrimaryText"
             android:textSize="16sp"
             android:text="加载中"
             tools:text="厦门市"/>
@@ -46,8 +46,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/tv_city_name"
-            android:textColor="#fff"
             android:textSize="16sp"
+            android:textColor="@color/colorSecondaryText"
             android:text="加载中"
             tools:text="10:30 发布"/>
 
@@ -67,8 +67,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
-                android:textColor="#fff"
                 android:textSize="32sp"
+                android:textColor="@color/colorPrimaryText"
                 android:text="0"
                 tools:text="17"/>
 
@@ -82,8 +82,8 @@
                 android:id="@+id/tv_weater_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#fff"
                 android:textSize="20sp"
+                android:textColor="@color/colorPrimaryText"
                 android:text="加载中"
                 tools:text="多云转雷阵雨"/>
 
@@ -102,27 +102,17 @@
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_height="0.7dp"
-            android:layout_below="@+id/ll_weather_info"
-            android:layout_marginTop="10dp"
-            android:background="@color/colorDivider"
-            android:id="@+id/view"/>
-
         <TextView
             android:id="@+id/tv_do_sport"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ll_weather_info"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorPrimaryText"
             tools:text="运动指数: 较适宜"
             android:text="运动指数: 加载中"
-            android:textColor="#fff"
-            android:textSize="16sp"/>
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/tv_do_flu"
@@ -130,12 +120,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/ll_weather_info"
-            android:layout_marginRight="32dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorPrimaryText"
             tools:text="流感指数: 较易发"
             android:text="流感指数: 加载中"
-            android:textColor="#fff"
-            android:textSize="16sp"/>
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/tv_do_car_washing"
@@ -143,11 +133,11 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/tv_do_sport"
             android:layout_below="@+id/tv_do_sport"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="14dp"
+            android:textColor="@color/colorPrimaryText"
             tools:text="洗车指数: 不适宜"
             android:text="洗车指数: 加载中"
-            android:textColor="#fff"
-            android:textSize="16sp"/>
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/tv_do_uv"
@@ -155,11 +145,11 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/tv_do_flu"
             android:layout_below="@+id/tv_do_sport"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="14dp"
             tools:text="紫外线强度: 弱"
+            android:textColor="@color/colorPrimaryText"
             android:text="运动指数: 加载中"
-            android:textColor="#fff"
-            android:textSize="16sp"/>
+            android:textSize="14sp"/>
 
     </RelativeLayout>
 
@@ -167,14 +157,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="8dp">
+        android:orientation="horizontal">
 
         <RelativeLayout
             android:id="@+id/rl_tab_cook"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="2dp"
             android:layout_weight="1"
             android:background="@drawable/ripple_round_main"
             android:padding="30dp">
@@ -184,7 +172,7 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/main_tab_cook"/>
+                android:src="@drawable/tab_cook"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -193,14 +181,13 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="4dp"
                 android:text="菜谱"
-                android:textColor="#fff"/>
+                android:textColor="@color/colorPrimaryText"/>
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/rl_tab_guide"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
             android:layout_weight="1"
             android:background="@drawable/ripple_round_main"
             android:padding="30dp">
@@ -210,7 +197,7 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/main_tab_guide"/>
+                android:src="@drawable/tab_guide"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -219,7 +206,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="4dp"
                 android:text="指南针"
-                android:textColor="#fff"/>
+                android:textColor="@color/colorPrimaryText"/>
         </RelativeLayout>
 
     </LinearLayout>
@@ -227,15 +214,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp">
+        android:orientation="horizontal">
 
         <RelativeLayout
             android:id="@+id/rl_tab_notepad"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="2dp"
             android:layout_weight="1"
             android:background="@drawable/ripple_round_main"
             android:padding="30dp">
@@ -245,7 +229,7 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/main_tab_notepad"/>
+                android:src="@drawable/tab_notepad"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -254,14 +238,13 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="4dp"
                 android:text="记事本"
-                android:textColor="#fff"/>
+                android:textColor="@color/colorPrimaryText"/>
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/rl_tab_robot"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
             android:layout_weight="1"
             android:background="@drawable/ripple_round_main"
             android:padding="30dp">
@@ -271,7 +254,7 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/main_tab_robot"/>
+                android:src="@drawable/tab_robot"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -280,7 +263,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="4dp"
                 android:text="智能机器人"
-                android:textColor="#fff"/>
+                android:textColor="@color/colorPrimaryText"/>
         </RelativeLayout>
 
     </LinearLayout>

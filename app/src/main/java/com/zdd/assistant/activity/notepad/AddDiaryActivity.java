@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.zdd.assistant.R;
+import com.zdd.assistant.base.BaseActivity;
 import com.zdd.assistant.custom.LinedEditText;
 import com.zdd.assistant.db.DiaryDatabaseHelper;
 import com.zdd.assistant.util.DateUtil;
@@ -25,7 +25,7 @@ import butterknife.OnClick;
 import cc.trity.floatingactionbutton.FloatingActionButton;
 import cc.trity.floatingactionbutton.FloatingActionsMenu;
 
-public class AddDiaryActivity extends AppCompatActivity
+public class AddDiaryActivity extends BaseActivity
 {
 
     @Bind(R.id.add_diary_tv_date)

@@ -23,7 +23,7 @@ import com.zdd.assistant.db.DiaryDatabaseHelper;
 import com.zdd.assistant.entity.event.StartUpdateDiaryEvent;
 import com.zdd.assistant.entity.notepad.DiaryBean;
 import com.zdd.assistant.util.DateUtil;
-import com.zdd.assistant.util.SpHelper;
+import com.zdd.assistant.util.SharedPreferenceUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -89,7 +89,7 @@ public class NotePadActivity extends BaseActivity
         mHelper = new DiaryDatabaseHelper(this, "Diary.db", null, 1);
         EventBus.getDefault()
                 .register(this);
-        SpHelper spHelper = SpHelper.getInstance(this);
+        SharedPreferenceUtil sharedPreferenceUtil = SharedPreferenceUtil.getInstance(this);
         getDiaryBeanList();
         mMainTvDate.setText("今天，" + DateUtil.getDate());
         mMainRvShowDiary.setLayoutManager(new LinearLayoutManager(this));
@@ -115,7 +115,6 @@ public class NotePadActivity extends BaseActivity
 
     private List<DiaryBean> getDiaryBeanList()
     {
-
         mDiaryBeanList = new ArrayList<>();
         List<DiaryBean> diaryList = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = mHelper.getWritableDatabase();

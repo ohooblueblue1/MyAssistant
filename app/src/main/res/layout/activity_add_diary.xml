@@ -15,26 +15,21 @@
         app:titleTextColor="#fff">
     </android.support.v7.widget.Toolbar>
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="20dp"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp">
+        android:padding="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingRight="20dp">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/add_diary_tv_date"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:gravity="center_vertical"
-                android:paddingRight="5dp"
                 tools:text="今天，2017年01月19日"
                 android:textSize="15sp"/>
 
@@ -49,11 +44,8 @@
                 android:minLines="8"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
+                android:layout_marginBottom="20dp"
                 android:scrollbars="vertical"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"/>
 
             <com.zdd.assistant.custom.LinedEditText
                 android:id="@+id/add_diary_et_content"
@@ -67,16 +59,12 @@
                 android:maxLines="10"
                 android:minLines="8"
                 android:paddingLeft="20dp"
+                android:layout_marginBottom="95dp"
                 android:paddingRight="20dp"
                 android:paddingTop="10dp"
                 android:scrollbars="vertical"
                 android:textSize="17sp"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="95dp">
-
-            </LinearLayout>
 
         </LinearLayout>
 
@@ -113,6 +101,8 @@
         </cc.trity.floatingactionbutton.FloatingActionsMenu>
 
     </RelativeLayout>
+
+
 </LinearLayout>
 
 
