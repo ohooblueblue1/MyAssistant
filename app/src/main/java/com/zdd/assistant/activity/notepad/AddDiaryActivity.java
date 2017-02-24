@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.zdd.assistant.R;
 import com.zdd.assistant.custom.LinedEditText;
 import com.zdd.assistant.db.DiaryDatabaseHelper;
-import com.zdd.assistant.util.GetDate;
+import com.zdd.assistant.util.DateUtil;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -64,7 +64,7 @@ public class AddDiaryActivity extends AppCompatActivity
         ButterKnife.bind(this);
         Intent intent = getIntent();
         mAddDiaryEtTitle.setText(intent.getStringExtra("title"));
-        mAddDiaryTvDate.setText("今天，" + GetDate.getDate());
+        mAddDiaryTvDate.setText("今天，" + DateUtil.getDate());
         mAddDiaryEtContent.setText(intent.getStringExtra("content"));
         mHelper = new DiaryDatabaseHelper(this, "Diary.db", null, 1);
     }
@@ -80,8 +80,8 @@ public class AddDiaryActivity extends AppCompatActivity
             case R.id.add_diary_et_content:
                 break;
             case R.id.add_diary_fab_back:
-                String date = GetDate.getDate()
-                                     .toString();
+                String date = DateUtil.getDate()
+                                      .toString();
                 String title = mAddDiaryEtTitle.getText()
                                                .toString() + "";
                 String content = mAddDiaryEtContent.getText()
@@ -99,8 +99,8 @@ public class AddDiaryActivity extends AppCompatActivity
                 NotePadActivity.actionStart(this);
                 break;
             case R.id.add_diary_fab_add:
-                final String dateBack = GetDate.getDate()
-                                               .toString();
+                final String dateBack = DateUtil.getDate()
+                                                .toString();
                 final String titleBack = mAddDiaryEtTitle.getText()
                                                          .toString();
                 final String contentBack = mAddDiaryEtContent.getText()

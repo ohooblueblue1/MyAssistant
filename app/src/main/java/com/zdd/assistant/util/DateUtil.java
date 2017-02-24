@@ -2,22 +2,40 @@ package com.zdd.assistant.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
  * Project Name: MyAssistant
  * File Name:    DateUtil.java
- * <p>
+ * ClassName:    DateUtil
+ *
  * Description: 时间日期工具类
  *
- * @author zdd
- * @date 2017年02月19日 19:07
+ * @author ZDD
+ * @date 2017年02月23日 17:41
  */
-public class DateUtil {
+public class DateUtil
+{
 
-    //传入日期字符串： 2017-02-19T14:20:00+08:00
-    //解析为：  2017-02-19
+    public static StringBuilder getDate()
+    {
 
+        StringBuilder stringBuilder = new StringBuilder();
+        Calendar now = Calendar.getInstance();
+        stringBuilder.append(now.get(Calendar.YEAR) + "年");
+        stringBuilder.append((int) (now.get(Calendar.MONTH) + 1) + "月");
+        stringBuilder.append(now.get(Calendar.DAY_OF_MONTH) + "日");
+        return stringBuilder;
+    }
+
+
+    /**
+     * 传入日期字符串： 2017-02-19T14:20:00+08:00
+     * 解析为：  2017-02-19
+     * @param updateTime
+     * @return
+     */
     public static String getWeatherTimeString(String updateTime) {
 
         String s = updateTime.substring(0, 18);
@@ -30,7 +48,6 @@ public class DateUtil {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
         return s + "发布";
     }
 

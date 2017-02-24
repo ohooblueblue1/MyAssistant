@@ -22,7 +22,7 @@ import com.zdd.assistant.base.BaseActivity;
 import com.zdd.assistant.db.DiaryDatabaseHelper;
 import com.zdd.assistant.entity.event.StartUpdateDiaryEvent;
 import com.zdd.assistant.entity.notepad.DiaryBean;
-import com.zdd.assistant.util.GetDate;
+import com.zdd.assistant.util.DateUtil;
 import com.zdd.assistant.util.SpHelper;
 
 import org.greenrobot.eventbus.EventBus;
@@ -91,7 +91,7 @@ public class NotePadActivity extends BaseActivity
                 .register(this);
         SpHelper spHelper = SpHelper.getInstance(this);
         getDiaryBeanList();
-        mMainTvDate.setText("今天，" + GetDate.getDate());
+        mMainTvDate.setText("今天，" + DateUtil.getDate());
         mMainRvShowDiary.setLayoutManager(new LinearLayoutManager(this));
         mMainRvShowDiary.setAdapter(new DiaryAdapter(this, mDiaryBeanList));
     }
@@ -126,11 +126,11 @@ public class NotePadActivity extends BaseActivity
             do
             {
                 String date = cursor.getString(cursor.getColumnIndex("date"));
-                String dateSystem = GetDate.getDate()
-                                           .toString();
+                String dateSystem = DateUtil.getDate()
+                                            .toString();
                 Logger.d("一级");
                 Logger.d("date1" + date);
-                Logger.d("date2" + GetDate.getDate());
+                Logger.d("date2" + DateUtil.getDate());
                 if (date.equals(dateSystem))
                 {
                     Logger.d("二级");
@@ -180,7 +180,7 @@ public class NotePadActivity extends BaseActivity
     {
         super.onNewIntent(intent);
         getDiaryBeanList();
-        mMainTvDate.setText("今天，" + GetDate.getDate());
+        mMainTvDate.setText("今天，" + DateUtil.getDate());
         mMainRvShowDiary.setLayoutManager(new LinearLayoutManager(this));
         mMainRvShowDiary.setAdapter(new DiaryAdapter(this, mDiaryBeanList));
     }

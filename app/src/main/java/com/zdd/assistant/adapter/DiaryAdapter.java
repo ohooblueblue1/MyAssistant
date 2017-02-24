@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.zdd.assistant.R;
 import com.zdd.assistant.entity.event.StartUpdateDiaryEvent;
 import com.zdd.assistant.entity.notepad.DiaryBean;
-import com.zdd.assistant.util.GetDate;
+import com.zdd.assistant.util.DateUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -49,7 +49,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryViewHol
     @Override
     public void onBindViewHolder(final DiaryViewHolder holder, final int position) {
 
-        String dateSystem = GetDate.getDate().toString();
+        String dateSystem = DateUtil.getDate().toString();
         if(mDiaryBeanList.get(position).getDate().equals(dateSystem)){
             holder.mIvCircle.setImageResource(R.drawable.circle_orange);
         }

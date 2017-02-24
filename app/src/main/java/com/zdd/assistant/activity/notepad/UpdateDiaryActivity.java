@@ -17,7 +17,7 @@ import com.zdd.assistant.R;
 import com.zdd.assistant.base.BaseActivity;
 import com.zdd.assistant.custom.LinedEditText;
 import com.zdd.assistant.db.DiaryDatabaseHelper;
-import com.zdd.assistant.util.GetDate;
+import com.zdd.assistant.util.DateUtil;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -66,7 +66,7 @@ public class UpdateDiaryActivity extends BaseActivity
         mHelper = new DiaryDatabaseHelper(this, "Diary.db", null, 1);
 
         Intent intent = getIntent();
-        mUpdateDiaryTvDate.setText("今天，" + GetDate.getDate());
+        mUpdateDiaryTvDate.setText("今天，" + DateUtil.getDate());
         mUpdateDiaryEtTitle.setText(intent.getStringExtra("title"));
         mUpdateDiaryEtContent.setText(intent.getStringExtra("content"));
     }
