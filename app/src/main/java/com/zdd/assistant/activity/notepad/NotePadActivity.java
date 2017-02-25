@@ -1,5 +1,6 @@
 package com.zdd.assistant.activity.notepad;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -16,7 +17,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.orhanobut.logger.Logger;
 import com.zdd.assistant.R;
 import com.zdd.assistant.adapter.DiaryAdapter;
 import com.zdd.assistant.base.BaseActivity;
@@ -41,8 +41,7 @@ import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
 
-public class NotePadActivity extends BaseActivity
-{
+public class NotePadActivity extends BaseActivity {
 
     @Bind(R.id.main_iv_circle)
     ImageView mMainIvCircle;
@@ -75,16 +74,14 @@ public class NotePadActivity extends BaseActivity
     private boolean isWrite = false;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_pad);
 
         initView();
     }
 
-    private void initView()
-    {
+    private void initView() {
         //初始化Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("日记");
@@ -103,8 +100,7 @@ public class NotePadActivity extends BaseActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         // 加载Toolbar菜单布局
         getMenuInflater().inflate(R.menu.activity_notepad, menu);
         return true;
@@ -112,24 +108,18 @@ public class NotePadActivity extends BaseActivity
 
     //Toolbar菜单点击事件监听
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
+    public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-        if (id == android.R.id.home)
-        {
+        if (id == android.R.id.home) {
             //按下返回导航按钮，结束当前Activity
             finish();
             return true;
-        }
-        else if (id == R.id.action_upload)
-        {
+        } else if (id == R.id.action_upload) {
             // TODO: 2017/2/25  备份到云端
             tryToUpload();
             return true;
-        }
-        else if (id == R.id.action_download)
-        {
+        } else if (id == R.id.action_download) {
             // TODO: 2017/2/25  同步到本地
             tryToDownload();
             return true;
@@ -137,50 +127,53 @@ public class NotePadActivity extends BaseActivity
         return super.onOptionsItemSelected(item);
     }
 
-    private void tryToDownload()
-    {
-        if (!checkIsNetAvailable())
-        {
-            return;
+    private void tryToDownload() {
+        try{
+            showProgressDialog("同步中，请稍后...");
+            final MyUser myUser = BmobUser.getCurrentUser(MyUser.class);
+            mDiaryList = myUser.getDiaryList();
+            mMainRvShowDiary.setAdapter(new DiaryAdapter(this, mDiaryList));
+            mMainLlMain.removeView(mItemFirst);
+            //同步到本地数据库
+            SQLiteDatabase db = mHelper.getWritableDatabase();
+            db.delete("Diary",null,null);
+            for(Diary diary : mDiaryList){
+                ContentValues values = new ContentValues();
+                values.put("date", diary.getDate());
+                values.put("title", diary.getTitle());
+                values.put("content", diary.getContent());
+                db.insert("Diary", null, values);
+                values.clear();
+            }
+            dismissProgressDialog();
+        }catch (Exception e){
+            e.printStackTrace();
         }
-
     }
 
-    private void tryToUpload()
-    {
-        if (!checkIsNetAvailable())
-        {
+    private void tryToUpload() {
+        if (!checkIsNetAvailable()) {
             return;
         }
-        if (mDiaryList.size() == 0)
-        {
+        if (mDiaryList.size() == 0) {
             ToastUtil.showToast(this, "没什么可以备份的");
             return;
         }
         final MyUser myUser = BmobUser.getCurrentUser(MyUser.class);
-
         myUser.setDiaryList(new ArrayList());
         //先清空云端
         myUser.remove("diaryList");
-        myUser.update(myUser.getObjectId(), new UpdateListener()
-        {
+        myUser.update(myUser.getObjectId(), new UpdateListener() {
             @Override
-            public void done(BmobException e)
-            {
-                //然后备份
+            public void done(BmobException e) {
                 myUser.setDiaryList(mDiaryList);
-                myUser.update(myUser.getObjectId(), new UpdateListener()
-                {
+                myUser.update(myUser.getObjectId(), new UpdateListener() {
                     @Override
-                    public void done(BmobException e)
-                    {
-                        if (e == null)
-                        {
-                            ToastUtil.showToast(NotePadActivity.this, "备份成功~");
-                        }
-                        else
-                        {
-                            ToastUtil.showToast(NotePadActivity.this, "备份失败，请重试~");
+                    public void done(BmobException e) {
+                        if (e == null) {
+                            ToastUtil.showToast(NotePadActivity.this, "备份成功");
+                        } else {
+                            ToastUtil.showToast(NotePadActivity.this, "备份失败");
                         }
                     }
                 });
@@ -190,58 +183,42 @@ public class NotePadActivity extends BaseActivity
     }
 
 
-    private List<Diary> getDiaryList()
-    {
+    private void getDiaryList() {
         mDiaryList = new ArrayList<>();
         List<Diary> diaryList = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = mHelper.getWritableDatabase();
         Cursor cursor = sqLiteDatabase.query("Diary", null, null, null, null, null, null);
 
-        if (cursor.moveToFirst())
-        {
-            do
-            {
+        if (cursor.moveToFirst()) {
+            do {
                 String date = cursor.getString(cursor.getColumnIndex("date"));
                 String dateSystem = DateUtil.getDate()
                                             .toString();
-                Logger.d("一级");
-                Logger.d("date1" + date);
-                Logger.d("date2" + DateUtil.getDate());
-                if (date.equals(dateSystem))
-                {
-                    Logger.d("二级");
+                if (date.equals(dateSystem)) {
                     mMainLlMain.removeView(mItemFirst);
-                    Logger.d("三级");
                     break;
                 }
-            }
-            while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
 
 
-        if (cursor.moveToFirst())
-        {
-            do
-            {
+        if (cursor.moveToFirst()) {
+            do {
                 String date = cursor.getString(cursor.getColumnIndex("date"));
                 String title = cursor.getString(cursor.getColumnIndex("title"));
                 String content = cursor.getString(cursor.getColumnIndex("content"));
-                mDiaryList.add(new Diary(date, title, content, BmobUser.getCurrentUser(MyUser.class)));
-            }
-            while (cursor.moveToNext());
+                mDiaryList.add(new Diary(date, title, content));
+            } while (cursor.moveToNext());
         }
         cursor.close();
-        for (int i = mDiaryList.size() - 1; i >= 0; i--)
-        {
+        for (int i = mDiaryList.size() - 1; i >= 0; i--) {
             diaryList.add(mDiaryList.get(i));
         }
         mDiaryList = diaryList;
-        return mDiaryList;
     }
 
     @Subscribe
-    public void startUpdateDiaryActivity(StartUpdateDiaryEvent event)
-    {
+    public void startUpdateDiaryActivity(StartUpdateDiaryEvent event) {
         String title = mDiaryList.get(event.getPosition())
                                  .getTitle();
         String content = mDiaryList.get(event.getPosition())
@@ -250,32 +227,26 @@ public class NotePadActivity extends BaseActivity
     }
 
     @Override
-    protected void onNewIntent(Intent intent)
-    {
+    protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         getDiaryList();
-        mMainTvDate.setText("今天，" + DateUtil.getDate());
-        mMainRvShowDiary.setLayoutManager(new LinearLayoutManager(this));
         mMainRvShowDiary.setAdapter(new DiaryAdapter(this, mDiaryList));
     }
 
     @Override
-    protected void onDestroy()
-    {
+    protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault()
                 .unregister(this);
     }
 
     @OnClick(R.id.main_fab_enter_edit)
-    public void onClick()
-    {
+    public void onClick() {
         AddDiaryActivity.actionStart(this);
     }
 
 
-    public static void actionStart(Context context)
-    {
+    public static void actionStart(Context context) {
         Intent intent = new Intent(context, NotePadActivity.class);
         context.startActivity(intent);
     }
