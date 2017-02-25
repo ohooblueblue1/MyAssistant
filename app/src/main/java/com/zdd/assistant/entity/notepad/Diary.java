@@ -1,26 +1,44 @@
 package com.zdd.assistant.entity.notepad;
 
+import com.zdd.assistant.entity.MyUser;
+
+import cn.bmob.v3.BmobObject;
+
 /**
  * Project Name: MyAssistant
- * File Name:    DiaryBean.java
- * ClassName:    DiaryBean
+ * File Name:    Diary.java
+ * ClassName:    Diary
  *
  * Description: 日记实体类
  *
  * @author ZDD
  * @date 2017年02月23日 17:17
  */
-public class DiaryBean
+public class Diary extends BmobObject
 {
     private String date;
     private String title;
     private String content;
+    private MyUser user;
 
-    public DiaryBean(String date, String title, String content)
+
+    public Diary(String date, String title, String content,MyUser myUser)
     {
         this.date = date;
         this.title = title;
         this.content = content;
+        this.user = myUser;
+    }
+
+
+    public MyUser getUser()
+    {
+        return user;
+    }
+
+    public void setUser(MyUser user)
+    {
+        this.user = user;
     }
 
     public String getDate()

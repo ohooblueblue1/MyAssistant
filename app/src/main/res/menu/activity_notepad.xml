@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/action_upload"
+        android:orderInCategory="100"
+        android:title="备份到云端"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_download"
+        android:orderInCategory="100"
+        android:title="同步到本地"
+        app:showAsAction="never"/>
+
+</menu>

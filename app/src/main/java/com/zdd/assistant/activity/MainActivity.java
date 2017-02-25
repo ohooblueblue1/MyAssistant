@@ -26,7 +26,6 @@ import com.zdd.assistant.provider.OnResponseListener;
 import com.zdd.assistant.provider.WeatherProvider;
 import com.zdd.assistant.util.ActivityCollector;
 import com.zdd.assistant.util.DateUtil;
-import com.zdd.assistant.util.ToastUtil;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -149,7 +148,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             public void onSuccess(Object response) {
                 fillWeatherSuggestion((WeatherSuggestion) response);
                 dismissProgressDialog();
-                ToastUtil.showToast(MainActivity.this,"天气信息已更新");
             }
 
             @Override

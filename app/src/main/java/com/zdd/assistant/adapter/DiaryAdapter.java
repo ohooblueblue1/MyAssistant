@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.zdd.assistant.R;
 import com.zdd.assistant.entity.event.StartUpdateDiaryEvent;
-import com.zdd.assistant.entity.notepad.DiaryBean;
+import com.zdd.assistant.entity.notepad.Diary;
 import com.zdd.assistant.util.DateUtil;
 
 import org.greenrobot.eventbus.EventBus;
@@ -34,12 +34,12 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryViewHol
 
     private Context mContext;
     private LayoutInflater mLayoutInflater;
-    private List<DiaryBean> mDiaryBeanList;
+    private List<Diary> mDiaryList;
 
-    public DiaryAdapter(Context context, List<DiaryBean> mDiaryBeanList){
+    public DiaryAdapter(Context context, List<Diary> mDiaryList){
         mContext = context;
         this.mLayoutInflater = LayoutInflater.from(context);
-        this.mDiaryBeanList = mDiaryBeanList;
+        this.mDiaryList = mDiaryList;
     }
     @Override
     public DiaryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -50,12 +50,12 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryViewHol
     public void onBindViewHolder(final DiaryViewHolder holder, final int position) {
 
         String dateSystem = DateUtil.getDate().toString();
-        if(mDiaryBeanList.get(position).getDate().equals(dateSystem)){
+        if(mDiaryList.get(position).getDate().equals(dateSystem)){
             holder.mIvCircle.setImageResource(R.drawable.circle_orange);
         }
-        holder.mTvDate.setText(mDiaryBeanList.get(position).getDate());
-        holder.mTvTitle.setText(mDiaryBeanList.get(position).getTitle());
-        holder.mTvContent.setText("       " + mDiaryBeanList.get(position).getContent());
+        holder.mTvDate.setText(mDiaryList.get(position).getDate());
+        holder.mTvTitle.setText(mDiaryList.get(position).getTitle());
+        holder.mTvContent.setText("       " + mDiaryList.get(position).getContent());
         holder.mIvEdit.setVisibility(View.INVISIBLE);
         holder.mLl.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +79,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryViewHol
 
     @Override
     public int getItemCount() {
-        return mDiaryBeanList.size();
+        return mDiaryList.size();
     }
 
     public static class DiaryViewHolder extends RecyclerView.ViewHolder{
