@@ -14,6 +14,7 @@ import com.zdd.assistant.activity.MainActivity;
 import com.zdd.assistant.base.BaseActivity;
 import com.zdd.assistant.entity.MyUser;
 import com.zdd.assistant.entity.event.RegisterSuccessEvent;
+import com.zdd.assistant.util.ActivityCollector;
 import com.zdd.assistant.util.TextUtil;
 import com.zdd.assistant.util.ToastUtil;
 
@@ -41,6 +42,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private PasswordView mPwVPassword;
 
     private Button mBtnLogin;
+
+    // 再按一次退出间隔时间
+    private static final long TIME_WAIT = 2000;
+    private static long TIME_TOUCH = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,4 +176,19 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         context.startActivity(intent);
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - TIME_TOUCH >= TIME_WAIT)
+        {
+            ToastUtil.showToast(this,"再按一次退出");
+            TIME_TOUCH = currentTime;
+        }
+        else
+        {
+            ToastUtil.cancelToast();
+            ActivityCollector.finishAll();
+        }
+    }
 }
