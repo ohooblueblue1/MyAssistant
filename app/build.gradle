@@ -44,8 +44,8 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     //volley
     //一个为公司环境，一个为宿舍环境
-    //compile files('E:/AndroidProject/MyAssistant/libs/library-1.0.19.jar')
-    compile files('D:/AndroidStudioPrj/MyAssistant/libs/library-1.0.19.jar')
+    compile files('E:/AndroidProject/MyAssistant/libs/library-1.0.19.jar')
+    //compile files('D:/AndroidStudioPrj/MyAssistant/libs/library-1.0.19.jar')
 
     //记事本模块
     compile 'com.orhanobut:logger:1.15'

@@ -26,6 +26,7 @@ import com.zdd.assistant.provider.OnResponseListener;
 import com.zdd.assistant.provider.WeatherProvider;
 import com.zdd.assistant.util.ActivityCollector;
 import com.zdd.assistant.util.DateUtil;
+import com.zdd.assistant.util.ToastUtil;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,7 +40,9 @@ import java.io.InputStream;
  * @author zdd
  * @date 2017年02月05日 21:13
  */
-public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,
+                                                          View.OnClickListener
+{
     private DrawerLayout mDrawer;
 
     //天气信息相关
@@ -59,8 +62,13 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     private WeatherProvider mWeatherProvider;
 
+    // 再按一次退出间隔时间
+    private static final long TIME_WAIT = 2000;
+    private static long TIME_TOUCH = 0;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -69,7 +77,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         loadWeatherData();
     }
 
-    private void initView() {
+    private void initView()
+    {
         //设置此页面不能侧滑关闭
         setSwipeBackEnable(false);
 
@@ -81,7 +90,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         setSupportActionBar(toolbar);
         //初始化侧滑菜单
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.navigation_drawer_open,
+                                                                 R.string.navigation_drawer_close);
         mDrawer.addDrawerListener(toggle);
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -110,55 +120,67 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
 
-    private void initDataProVider() {
+    private void initDataProVider()
+    {
         mWeatherProvider = new WeatherProvider();
     }
 
 
-    private void loadWeatherData() {
+    private void loadWeatherData()
+    {
 
-        if (!checkIsNetAvailable()) {
+        if (!checkIsNetAvailable())
+        {
             return;
         }
 
         showProgressDialog("更新天气信息...");
         //当前天气
-        mWeatherProvider.loadWeatherNow("ip", new OnResponseListener() {
+        mWeatherProvider.loadWeatherNow("ip", new OnResponseListener()
+        {
             @Override
-            public void onBefore() {
+            public void onBefore()
+            {
             }
 
             @Override
-            public void onSuccess(Object response) {
+            public void onSuccess(Object response)
+            {
                 fillWeatherNow((WeatherNow) response);
             }
 
             @Override
-            public void onFailure() {
+            public void onFailure()
+            {
             }
         });
 
         //生活指数
-        mWeatherProvider.loadWeatherSuggestion("ip", new OnResponseListener() {
+        mWeatherProvider.loadWeatherSuggestion("ip", new OnResponseListener()
+        {
             @Override
-            public void onBefore() {
+            public void onBefore()
+            {
             }
 
             @Override
-            public void onSuccess(Object response) {
+            public void onSuccess(Object response)
+            {
                 fillWeatherSuggestion((WeatherSuggestion) response);
                 dismissProgressDialog();
             }
 
             @Override
-            public void onFailure() {
+            public void onFailure()
+            {
                 dismissProgressDialog();
             }
         });
     }
 
 
-    private void fillWeatherNow(WeatherNow response) {
+    private void fillWeatherNow(WeatherNow response)
+    {
         WeatherNow.ResultsBean result = response.getResults()
                                                 .get(0);
         mTvCityName.setText(result.getLocation()
@@ -167,18 +189,22 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                                      .getTemperature());
         mTvWeatherName.setText(result.getNow()
                                      .getText());
-        try {
+        try
+        {
             InputStream in = getAssets().open("weather/" + result.getNow()
                                                                  .getCode() + ".png");
             mIvWeatherIcon.setImageDrawable(Drawable.createFromStream(in, null));
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
         mTvUpdateTime.setText(DateUtil.getWeatherTimeString(result.getLast_update()));
     }
 
 
-    private void fillWeatherSuggestion(WeatherSuggestion response) {
+    private void fillWeatherSuggestion(WeatherSuggestion response)
+    {
         WeatherSuggestion.ResultsBean.SuggestionBean result = response.getResults()
                                                                       .get(0)
                                                                       .getSuggestion();
@@ -193,12 +219,26 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed()
+    {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer.isDrawerOpen(GravityCompat.START))
+        {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+        }
+        else
+        {
+            long currentTime = System.currentTimeMillis();
+            if (currentTime - TIME_TOUCH >= TIME_WAIT)
+            {
+                ToastUtil.showToast(this,"再按一次退出");
+                TIME_TOUCH = currentTime;
+            }
+            else
+            {
+                ToastUtil.cancelToast();
+                finish();
+            }
         }
     }
 
@@ -210,12 +250,16 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
      */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(MenuItem item)
+    {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_camera)
+        {
 
-        } else if (id == R.id.nav_gallery) {
+        }
+        else if (id == R.id.nav_gallery)
+        {
 
         }
 
@@ -223,14 +267,17 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         return true;
     }
 
-    public static void actionStart(Context context) {
+    public static void actionStart(Context context)
+    {
         Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
+    public void onClick(View v)
+    {
+        switch (v.getId())
+        {
 
             case R.id.rl_tab_cook:
                 CookActivity.actionStart(MainActivity.this);
