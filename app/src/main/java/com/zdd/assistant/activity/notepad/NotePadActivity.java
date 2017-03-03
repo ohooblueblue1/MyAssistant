@@ -150,6 +150,7 @@ public class NotePadActivity extends BaseActivity {
             e.printStackTrace();
         }
     }
+    
 
     private void tryToUpload() {
         if (!checkIsNetAvailable()) {
