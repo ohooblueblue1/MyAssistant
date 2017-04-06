@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.zdd.assistant"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.zdd.assistant">
 
     <!-- 允许联网 -->
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -72,6 +72,9 @@
         <activity android:name=".activity.notepad.AddDiaryActivity">
         </activity>
         <activity android:name=".activity.notepad.UpdateDiaryActivity">
+        </activity>
+        <activity android:name=".activity.AboutActivity"
+            android:label="关于">
         </activity>
     </application>
 

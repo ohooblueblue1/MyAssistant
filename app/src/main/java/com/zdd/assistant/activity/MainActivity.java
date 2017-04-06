@@ -254,15 +254,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if (id == R.id.nav_camera)
-        {
-
+        if (id == R.id.nav_about) {
+            AboutActivity.actionStart(this);
         }
-        else if (id == R.id.nav_gallery)
-        {
-
-        }
-
         mDrawer.closeDrawer(GravityCompat.START);
         return true;
     }
