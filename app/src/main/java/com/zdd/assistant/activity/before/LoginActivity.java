@@ -56,6 +56,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         EventBus.getDefault()
                 .register(this);
         initView();
+        ActivityCollector.finishAllOther(this);
     }
 
     @Override

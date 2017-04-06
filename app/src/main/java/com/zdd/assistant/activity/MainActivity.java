@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zdd.assistant.R;
+import com.zdd.assistant.activity.before.LoginActivity;
 import com.zdd.assistant.activity.cook.CookActivity;
 import com.zdd.assistant.activity.guide.GuideActivity;
 import com.zdd.assistant.activity.notepad.NotePadActivity;
@@ -256,6 +257,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         int id = item.getItemId();
         if (id == R.id.nav_about) {
             AboutActivity.actionStart(this);
+        }
+        else if(id == R.id.nav_exit){
+            LoginActivity.actionStart(this);
         }
         mDrawer.closeDrawer(GravityCompat.START);
         return true;
